@@ -1,0 +1,11 @@
+PROJEKT
+Napisz program, w którym:
+*za pomoc¹ potencjometru ustawisz wartoœæ na wyœwietlaczu od 0 do 100
+*jest przycisk start i stop (na przerwaniach) 
+*jest dioda
+Dzia³anie programu:
+Po uruchomieniu na wyœwietlaczu widzimy wartoœæ od 0 do 100 w zale¿noœci od pozycji potencjometru. 
+Obracaj¹c potencjometrem mo¿emy zmieniaæ wartoœæ. 
+Gdy j¹ ustawimy przycisk start uruchamia nam odliczanie na timerze 
+(wartoœæ podana na wyœwietlaczu to liczba sekund). Po up³ywie czasu zapala siê dioda. 
+Odliczanie mo¿emy przerwaæ w dowolnym momencie przyciskiem stop. 
