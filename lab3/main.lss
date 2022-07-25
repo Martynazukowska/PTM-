@@ -1,0 +1,497 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001aa  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_aranges 00000020  00000000  00000000  000001fe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  2 .debug_pubnames 0000001b  00000000  00000000  0000021e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_info   00000076  00000000  00000000  00000239  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_abbrev 00000041  00000000  00000000  000002af  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_line   00000490  00000000  00000000  000002f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_frame  00000020  00000000  00000000  00000780  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    0000009f  00000000  00000000  000007a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 36 00 	call	0x6c	; 0x6c <main>
+  64:	0c 94 d3 00 	jmp	0x1a6	; 0x1a6 <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <main>:
+#define PULLUP_SW10 	PORTD |= (1<<PD1)
+
+
+int main(void)
+{
+	INIT_LED1;
+  6c:	d0 9a       	sbi	0x1a, 0	; 26
+	INIT_LED2;
+  6e:	d1 9a       	sbi	0x1a, 1	; 26
+	INIT_LED3;
+  70:	d2 9a       	sbi	0x1a, 2	; 26
+	INIT_LED4;
+  72:	d3 9a       	sbi	0x1a, 3	; 26
+	INIT_LED5;
+  74:	d4 9a       	sbi	0x1a, 4	; 26
+	INIT_LED6;
+  76:	d5 9a       	sbi	0x1a, 5	; 26
+	INIT_LED7;
+  78:	d6 9a       	sbi	0x1a, 6	; 26
+	INIT_LED8;
+  7a:	d7 9a       	sbi	0x1a, 7	; 26
+	
+	INIT_SW1;
+  7c:	b8 98       	cbi	0x17, 0	; 23
+	INIT_SW2;
+  7e:	b9 98       	cbi	0x17, 1	; 23
+	INIT_SW3;
+  80:	ba 98       	cbi	0x17, 2	; 23
+	INIT_SW4;
+  82:	bb 98       	cbi	0x17, 3	; 23
+	INIT_SW5;
+  84:	bc 98       	cbi	0x17, 4	; 23
+	INIT_SW6;
+  86:	bd 98       	cbi	0x17, 5	; 23
+	INIT_SW7;
+  88:	be 98       	cbi	0x17, 6	; 23
+	INIT_SW8;
+  8a:	bf 98       	cbi	0x17, 7	; 23
+	INIT_SW9;
+  8c:	88 98       	cbi	0x11, 0	; 17
+	INIT_SW10;
+  8e:	89 98       	cbi	0x11, 1	; 17
+
+	PULLUP_SW1;
+  90:	c0 9a       	sbi	0x18, 0	; 24
+	PULLUP_SW2;
+  92:	c1 9a       	sbi	0x18, 1	; 24
+	PULLUP_SW3;
+  94:	c2 9a       	sbi	0x18, 2	; 24
+	PULLUP_SW4;
+  96:	c3 9a       	sbi	0x18, 3	; 24
+	PULLUP_SW5;
+  98:	c4 9a       	sbi	0x18, 4	; 24
+	PULLUP_SW6;
+  9a:	c5 9a       	sbi	0x18, 5	; 24
+	PULLUP_SW7;
+  9c:	c6 9a       	sbi	0x18, 6	; 24
+	PULLUP_SW8;
+  9e:	c7 9a       	sbi	0x18, 7	; 24
+	PULLUP_SW9;
+  a0:	90 9a       	sbi	0x12, 0	; 18
+	PULLUP_SW10;
+  a2:	91 9a       	sbi	0x12, 1	; 18
+  a4:	06 c0       	rjmp	.+12     	; 0xb2 <main+0x46>
+	
+	while(1)
+	{
+		while(!(PINB & (1<<PB0))) //
+		{	
+			LED_ON1;
+  a6:	d8 9a       	sbi	0x1b, 0	; 27
+			LED_ON2;
+  a8:	d9 9a       	sbi	0x1b, 1	; 27
+			LED_ON3;
+  aa:	da 9a       	sbi	0x1b, 2	; 27
+			LED_ON4;
+  ac:	db 9a       	sbi	0x1b, 3	; 27
+			LED_ON5;
+  ae:	dc 9a       	sbi	0x1b, 4	; 27
+			LED_ON6;
+  b0:	dd 9a       	sbi	0x1b, 5	; 27
+	PULLUP_SW10;
+	
+	
+	while(1)
+	{
+		while(!(PINB & (1<<PB0))) //
+  b2:	b0 9b       	sbis	0x16, 0	; 22
+  b4:	f8 cf       	rjmp	.-16     	; 0xa6 <main+0x3a>
+			LED_ON5;
+			LED_ON6;
+			
+			
+		}
+		LED_OFF1;
+  b6:	d8 98       	cbi	0x1b, 0	; 27
+		LED_OFF2;
+  b8:	d9 98       	cbi	0x1b, 1	; 27
+		LED_OFF3;
+  ba:	da 98       	cbi	0x1b, 2	; 27
+		LED_OFF4;
+  bc:	db 98       	cbi	0x1b, 3	; 27
+		LED_OFF5;
+  be:	dc 98       	cbi	0x1b, 4	; 27
+		LED_OFF6;
+  c0:	dd 98       	cbi	0x1b, 5	; 27
+  c2:	02 c0       	rjmp	.+4      	; 0xc8 <main+0x5c>
+	
+		while(!(PINB & (1<<PB1))) //
+		{
+			LED_ON2;
+  c4:	d9 9a       	sbi	0x1b, 1	; 27
+			LED_ON3;
+  c6:	da 9a       	sbi	0x1b, 2	; 27
+		LED_OFF3;
+		LED_OFF4;
+		LED_OFF5;
+		LED_OFF6;
+	
+		while(!(PINB & (1<<PB1))) //
+  c8:	b1 9b       	sbis	0x16, 1	; 22
+  ca:	fc cf       	rjmp	.-8      	; 0xc4 <main+0x58>
+		{
+			LED_ON2;
+			LED_ON3;
+		}
+		LED_OFF2;
+  cc:	d9 98       	cbi	0x1b, 1	; 27
+		LED_OFF3;
+  ce:	da 98       	cbi	0x1b, 2	; 27
+  d0:	05 c0       	rjmp	.+10     	; 0xdc <main+0x70>
+		
+		while(!(PINB & (1<<PB2))) //
+		{
+			LED_ON1;
+  d2:	d8 9a       	sbi	0x1b, 0	; 27
+			LED_ON2;
+  d4:	d9 9a       	sbi	0x1b, 1	; 27
+			LED_ON4;
+  d6:	db 9a       	sbi	0x1b, 3	; 27
+			LED_ON5;
+  d8:	dc 9a       	sbi	0x1b, 4	; 27
+			LED_ON7;
+  da:	de 9a       	sbi	0x1b, 6	; 27
+			LED_ON3;
+		}
+		LED_OFF2;
+		LED_OFF3;
+		
+		while(!(PINB & (1<<PB2))) //
+  dc:	b2 9b       	sbis	0x16, 2	; 22
+  de:	f9 cf       	rjmp	.-14     	; 0xd2 <main+0x66>
+			LED_ON4;
+			LED_ON5;
+			LED_ON7;
+			
+		}
+		LED_OFF1;
+  e0:	d8 98       	cbi	0x1b, 0	; 27
+		LED_OFF2;
+  e2:	d9 98       	cbi	0x1b, 1	; 27
+		LED_OFF4;
+  e4:	db 98       	cbi	0x1b, 3	; 27
+		LED_OFF5;
+  e6:	dc 98       	cbi	0x1b, 4	; 27
+		LED_OFF7;
+  e8:	de 98       	cbi	0x1b, 6	; 27
+  ea:	05 c0       	rjmp	.+10     	; 0xf6 <main+0x8a>
+
+		while(!(PINB & (1<<PB3))) //
+		{
+			LED_ON1;
+  ec:	d8 9a       	sbi	0x1b, 0	; 27
+			LED_ON2;
+  ee:	d9 9a       	sbi	0x1b, 1	; 27
+			LED_ON3;
+  f0:	da 9a       	sbi	0x1b, 2	; 27
+			LED_ON4;
+  f2:	db 9a       	sbi	0x1b, 3	; 27
+			LED_ON7;
+  f4:	de 9a       	sbi	0x1b, 6	; 27
+		LED_OFF2;
+		LED_OFF4;
+		LED_OFF5;
+		LED_OFF7;
+
+		while(!(PINB & (1<<PB3))) //
+  f6:	b3 9b       	sbis	0x16, 3	; 22
+  f8:	f9 cf       	rjmp	.-14     	; 0xec <main+0x80>
+			LED_ON3;
+			LED_ON4;
+			LED_ON7;
+			
+		}
+		LED_OFF1;
+  fa:	d8 98       	cbi	0x1b, 0	; 27
+		LED_OFF2;
+  fc:	d9 98       	cbi	0x1b, 1	; 27
+		LED_OFF3;
+  fe:	da 98       	cbi	0x1b, 2	; 27
+		LED_OFF4;
+ 100:	db 98       	cbi	0x1b, 3	; 27
+		LED_OFF7;
+ 102:	de 98       	cbi	0x1b, 6	; 27
+ 104:	04 c0       	rjmp	.+8      	; 0x10e <main+0xa2>
+		
+		while(!(PINB & (1<<PB4))) //
+		{	
+			LED_ON2;
+ 106:	d9 9a       	sbi	0x1b, 1	; 27
+			LED_ON3;
+ 108:	da 9a       	sbi	0x1b, 2	; 27
+			LED_ON6;
+ 10a:	dd 9a       	sbi	0x1b, 5	; 27
+			LED_ON7;
+ 10c:	de 9a       	sbi	0x1b, 6	; 27
+		LED_OFF2;
+		LED_OFF3;
+		LED_OFF4;
+		LED_OFF7;
+		
+		while(!(PINB & (1<<PB4))) //
+ 10e:	b4 9b       	sbis	0x16, 4	; 22
+ 110:	fa cf       	rjmp	.-12     	; 0x106 <main+0x9a>
+			LED_ON6;
+			LED_ON7;
+			
+			
+		}
+		LED_OFF2;
+ 112:	d9 98       	cbi	0x1b, 1	; 27
+		LED_OFF3;
+ 114:	da 98       	cbi	0x1b, 2	; 27
+		LED_OFF6;
+ 116:	dd 98       	cbi	0x1b, 5	; 27
+		LED_OFF7;
+ 118:	de 98       	cbi	0x1b, 6	; 27
+ 11a:	05 c0       	rjmp	.+10     	; 0x126 <main+0xba>
+		
+		while(!(PINB & (1<<PB5))) //
+		{	
+			LED_ON1;
+ 11c:	d8 9a       	sbi	0x1b, 0	; 27
+			LED_ON3;
+ 11e:	da 9a       	sbi	0x1b, 2	; 27
+			LED_ON4;
+ 120:	db 9a       	sbi	0x1b, 3	; 27
+			LED_ON6;
+ 122:	dd 9a       	sbi	0x1b, 5	; 27
+			LED_ON7;
+ 124:	de 9a       	sbi	0x1b, 6	; 27
+		LED_OFF2;
+		LED_OFF3;
+		LED_OFF6;
+		LED_OFF7;
+		
+		while(!(PINB & (1<<PB5))) //
+ 126:	b5 9b       	sbis	0x16, 5	; 22
+ 128:	f9 cf       	rjmp	.-14     	; 0x11c <main+0xb0>
+			LED_ON6;
+			LED_ON7;
+			
+			
+		}
+		LED_OFF1;
+ 12a:	d8 98       	cbi	0x1b, 0	; 27
+		LED_OFF3;
+ 12c:	da 98       	cbi	0x1b, 2	; 27
+		LED_OFF4;
+ 12e:	db 98       	cbi	0x1b, 3	; 27
+		LED_OFF6;
+ 130:	dd 98       	cbi	0x1b, 5	; 27
+		LED_OFF7;
+ 132:	de 98       	cbi	0x1b, 6	; 27
+ 134:	06 c0       	rjmp	.+12     	; 0x142 <main+0xd6>
+		
+		while(!(PINB & (1<<PB6))) //
+		{	
+			LED_ON1;
+ 136:	d8 9a       	sbi	0x1b, 0	; 27
+			LED_ON3;
+ 138:	da 9a       	sbi	0x1b, 2	; 27
+			LED_ON4;
+ 13a:	db 9a       	sbi	0x1b, 3	; 27
+			LED_ON5;
+ 13c:	dc 9a       	sbi	0x1b, 4	; 27
+			LED_ON6;
+ 13e:	dd 9a       	sbi	0x1b, 5	; 27
+			LED_ON7;
+ 140:	de 9a       	sbi	0x1b, 6	; 27
+		LED_OFF3;
+		LED_OFF4;
+		LED_OFF6;
+		LED_OFF7;
+		
+		while(!(PINB & (1<<PB6))) //
+ 142:	b6 9b       	sbis	0x16, 6	; 22
+ 144:	f8 cf       	rjmp	.-16     	; 0x136 <main+0xca>
+			LED_ON7;
+			
+			
+		}
+		
+		LED_OFF1;
+ 146:	d8 98       	cbi	0x1b, 0	; 27
+		LED_OFF3;
+ 148:	da 98       	cbi	0x1b, 2	; 27
+		LED_OFF4;
+ 14a:	db 98       	cbi	0x1b, 3	; 27
+		LED_OFF5;
+ 14c:	dc 98       	cbi	0x1b, 4	; 27
+		LED_OFF6;
+ 14e:	dd 98       	cbi	0x1b, 5	; 27
+		LED_OFF7;
+ 150:	de 98       	cbi	0x1b, 6	; 27
+ 152:	03 c0       	rjmp	.+6      	; 0x15a <main+0xee>
+		
+		while(!(PINB & (1<<PB7))) //
+		{	
+			LED_ON1;
+ 154:	d8 9a       	sbi	0x1b, 0	; 27
+			LED_ON2;
+ 156:	d9 9a       	sbi	0x1b, 1	; 27
+			LED_ON3;
+ 158:	da 9a       	sbi	0x1b, 2	; 27
+		LED_OFF4;
+		LED_OFF5;
+		LED_OFF6;
+		LED_OFF7;
+		
+		while(!(PINB & (1<<PB7))) //
+ 15a:	b7 9b       	sbis	0x16, 7	; 22
+ 15c:	fb cf       	rjmp	.-10     	; 0x154 <main+0xe8>
+			LED_ON2;
+			LED_ON3;
+			
+			
+		}
+		LED_OFF1;
+ 15e:	d8 98       	cbi	0x1b, 0	; 27
+		LED_OFF2;
+ 160:	d9 98       	cbi	0x1b, 1	; 27
+		LED_OFF3;
+ 162:	da 98       	cbi	0x1b, 2	; 27
+ 164:	07 c0       	rjmp	.+14     	; 0x174 <main+0x108>
+		
+		while(!(PIND & (1<<PD0))) //
+		{	
+			LED_ON1;
+ 166:	d8 9a       	sbi	0x1b, 0	; 27
+			LED_ON2;
+ 168:	d9 9a       	sbi	0x1b, 1	; 27
+			LED_ON3;
+ 16a:	da 9a       	sbi	0x1b, 2	; 27
+			LED_ON4;
+ 16c:	db 9a       	sbi	0x1b, 3	; 27
+			LED_ON5;
+ 16e:	dc 9a       	sbi	0x1b, 4	; 27
+			LED_ON6;
+ 170:	dd 9a       	sbi	0x1b, 5	; 27
+			LED_ON7;
+ 172:	de 9a       	sbi	0x1b, 6	; 27
+		}
+		LED_OFF1;
+		LED_OFF2;
+		LED_OFF3;
+		
+		while(!(PIND & (1<<PD0))) //
+ 174:	80 9b       	sbis	0x10, 0	; 16
+ 176:	f7 cf       	rjmp	.-18     	; 0x166 <main+0xfa>
+			LED_ON6;
+			LED_ON7;
+			
+			
+		}
+		LED_OFF1;
+ 178:	d8 98       	cbi	0x1b, 0	; 27
+		LED_OFF2;
+ 17a:	d9 98       	cbi	0x1b, 1	; 27
+		LED_OFF3;
+ 17c:	da 98       	cbi	0x1b, 2	; 27
+		LED_OFF4;
+ 17e:	db 98       	cbi	0x1b, 3	; 27
+		LED_OFF5;
+ 180:	dc 98       	cbi	0x1b, 4	; 27
+		LED_OFF6;
+ 182:	dd 98       	cbi	0x1b, 5	; 27
+		LED_OFF7;
+ 184:	de 98       	cbi	0x1b, 6	; 27
+ 186:	06 c0       	rjmp	.+12     	; 0x194 <main+0x128>
+		while(!(PIND & (1<<PD1))) //
+		{	
+			LED_ON1;
+ 188:	d8 9a       	sbi	0x1b, 0	; 27
+			LED_ON2;
+ 18a:	d9 9a       	sbi	0x1b, 1	; 27
+			LED_ON3;
+ 18c:	da 9a       	sbi	0x1b, 2	; 27
+			LED_ON4;
+ 18e:	db 9a       	sbi	0x1b, 3	; 27
+			LED_ON6;
+ 190:	dd 9a       	sbi	0x1b, 5	; 27
+			LED_ON7;
+ 192:	de 9a       	sbi	0x1b, 6	; 27
+		LED_OFF3;
+		LED_OFF4;
+		LED_OFF5;
+		LED_OFF6;
+		LED_OFF7;
+		while(!(PIND & (1<<PD1))) //
+ 194:	81 9b       	sbis	0x10, 1	; 16
+ 196:	f8 cf       	rjmp	.-16     	; 0x188 <main+0x11c>
+			LED_ON6;
+			LED_ON7;
+			
+			
+		}
+		LED_OFF1;
+ 198:	d8 98       	cbi	0x1b, 0	; 27
+		LED_OFF2;
+ 19a:	d9 98       	cbi	0x1b, 1	; 27
+		LED_OFF3;
+ 19c:	da 98       	cbi	0x1b, 2	; 27
+		LED_OFF4;
+ 19e:	db 98       	cbi	0x1b, 3	; 27
+		LED_OFF6;
+ 1a0:	dd 98       	cbi	0x1b, 5	; 27
+		LED_OFF7;
+ 1a2:	de 98       	cbi	0x1b, 6	; 27
+ 1a4:	86 cf       	rjmp	.-244    	; 0xb2 <main+0x46>
+
+000001a6 <_exit>:
+ 1a6:	f8 94       	cli
+
+000001a8 <__stop_program>:
+ 1a8:	ff cf       	rjmp	.-2      	; 0x1a8 <__stop_program>
