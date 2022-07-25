@@ -1,0 +1,494 @@
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	wyswietlacz
+  18               	wyswietlacz:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	.LVL0:
+  22               	/* prologue: function */
+  23               	/* frame size = 0 */
+  24               	.LM2:
+  25 0000 8430      		cpi r24,4
+  26 0002 9105      		cpc r25,__zero_reg__
+  27 0004 01F4      		brne .+2
+  28 0006 00C0      		rjmp .L7
+  29 0008 8530      		cpi r24,5
+  30 000a 9105      		cpc r25,__zero_reg__
+  31 000c 04F4      		brge .L13
+  32 000e 8130      		cpi r24,1
+  33 0010 9105      		cpc r25,__zero_reg__
+  34 0012 01F0      		breq .L4
+  35 0014 8230      		cpi r24,2
+  36 0016 9105      		cpc r25,__zero_reg__
+  37 0018 04F4      		brge .L14
+  38 001a 892B      		or r24,r25
+  39 001c 01F0      		breq .L3
+  40 001e 0895      		ret
+  41               	.L14:
+  42 0020 8230      		cpi r24,2
+  43 0022 9105      		cpc r25,__zero_reg__
+  44 0024 01F0      		breq .L5
+  45 0026 0397      		sbiw r24,3
+  46 0028 01F0      		breq .+2
+  47 002a 00C0      		rjmp .L16
+  48 002c 00C0      		rjmp .L24
+  49               	.L13:
+  50 002e 8730      		cpi r24,7
+  51 0030 9105      		cpc r25,__zero_reg__
+  52 0032 01F0      		breq .L10
+  53 0034 8830      		cpi r24,8
+  54 0036 9105      		cpc r25,__zero_reg__
+  55 0038 04F4      		brge .L15
+  56 003a 8530      		cpi r24,5
+  57 003c 9105      		cpc r25,__zero_reg__
+  58 003e 01F0      		breq .L8
+  59 0040 0697      		sbiw r24,6
+  60 0042 01F0      		breq .+2
+  61 0044 00C0      		rjmp .L16
+  62 0046 00C0      		rjmp .L25
+  63               	.L15:
+  64 0048 8830      		cpi r24,8
+  65 004a 9105      		cpc r25,__zero_reg__
+  66 004c 01F0      		breq .L11
+  67 004e 0997      		sbiw r24,9
+  68 0050 01F4      		brne .L16
+  69 0052 00C0      		rjmp .L26
+  70               	.L3:
+  71               	.LM3:
+  72 0054 D89A      		sbi 59-32,0
+  73               	.LM4:
+  74 0056 D99A      		sbi 59-32,1
+  75               	.LM5:
+  76 0058 DA9A      		sbi 59-32,2
+  77               	.LM6:
+  78 005a DB9A      		sbi 59-32,3
+  79               	.LM7:
+  80 005c DC9A      		sbi 59-32,4
+  81               	.LM8:
+  82 005e DD9A      		sbi 59-32,5
+  83 0060 00C0      		rjmp .L19
+  84               	.L4:
+  85               	.LM9:
+  86 0062 D898      		cbi 59-32,0
+  87 0064 00C0      		rjmp .L21
+  88               	.L5:
+  89               	.LM10:
+  90 0066 D89A      		sbi 59-32,0
+  91               	.LM11:
+  92 0068 D99A      		sbi 59-32,1
+  93               	.LM12:
+  94 006a DA98      		cbi 59-32,2
+  95               	.LM13:
+  96 006c DB9A      		sbi 59-32,3
+  97               	.LM14:
+  98 006e DC9A      		sbi 59-32,4
+  99 0070 00C0      		rjmp .L22
+ 100               	.L24:
+ 101               	.LM15:
+ 102 0072 D89A      		sbi 59-32,0
+ 103               	.LM16:
+ 104 0074 D99A      		sbi 59-32,1
+ 105               	.LM17:
+ 106 0076 DA9A      		sbi 59-32,2
+ 107               	.LM18:
+ 108 0078 DB9A      		sbi 59-32,3
+ 109               	.LM19:
+ 110 007a DC98      		cbi 59-32,4
+ 111               	.L22:
+ 112               	.LM20:
+ 113 007c DD98      		cbi 59-32,5
+ 114 007e 00C0      		rjmp .L20
+ 115               	.L7:
+ 116               	.LM21:
+ 117 0080 D898      		cbi 59-32,0
+ 118               	.LM22:
+ 119 0082 D99A      		sbi 59-32,1
+ 120               	.LM23:
+ 121 0084 DA9A      		sbi 59-32,2
+ 122               	.LM24:
+ 123 0086 DB98      		cbi 59-32,3
+ 124 0088 00C0      		rjmp .L23
+ 125               	.L8:
+ 126               	.LM25:
+ 127 008a D89A      		sbi 59-32,0
+ 128               	.LM26:
+ 129 008c D998      		cbi 59-32,1
+ 130               	.LM27:
+ 131 008e DA9A      		sbi 59-32,2
+ 132               	.LM28:
+ 133 0090 DB9A      		sbi 59-32,3
+ 134               	.L23:
+ 135               	.LM29:
+ 136 0092 DC98      		cbi 59-32,4
+ 137 0094 00C0      		rjmp .L18
+ 138               	.L25:
+ 139               	.LM30:
+ 140 0096 D89A      		sbi 59-32,0
+ 141               	.LM31:
+ 142 0098 D998      		cbi 59-32,1
+ 143 009a 00C0      		rjmp .L17
+ 144               	.L10:
+ 145               	.LM32:
+ 146 009c D89A      		sbi 59-32,0
+ 147               	.L21:
+ 148               	.LM33:
+ 149 009e D99A      		sbi 59-32,1
+ 150               	.LM34:
+ 151 00a0 DA9A      		sbi 59-32,2
+ 152               	.LM35:
+ 153 00a2 DB98      		cbi 59-32,3
+ 154               	.LM36:
+ 155 00a4 DC98      		cbi 59-32,4
+ 156               	.LM37:
+ 157 00a6 DD98      		cbi 59-32,5
+ 158               	.L19:
+ 159               	.LM38:
+ 160 00a8 DE98      		cbi 59-32,6
+ 161 00aa 0895      		ret
+ 162               	.L11:
+ 163               	.LM39:
+ 164 00ac D89A      		sbi 59-32,0
+ 165               	.LM40:
+ 166 00ae D99A      		sbi 59-32,1
+ 167               	.L17:
+ 168               	.LM41:
+ 169 00b0 DA9A      		sbi 59-32,2
+ 170               	.LM42:
+ 171 00b2 DB9A      		sbi 59-32,3
+ 172               	.LM43:
+ 173 00b4 DC9A      		sbi 59-32,4
+ 174               	.L18:
+ 175               	.LM44:
+ 176 00b6 DD9A      		sbi 59-32,5
+ 177               	.L20:
+ 178               	.LM45:
+ 179 00b8 DE9A      		sbi 59-32,6
+ 180 00ba 0895      		ret
+ 181               	.L26:
+ 182               	.LM46:
+ 183 00bc D89A      		sbi 59-32,0
+ 184               	.LM47:
+ 185 00be D99A      		sbi 59-32,1
+ 186               	.LM48:
+ 187 00c0 DA9A      		sbi 59-32,2
+ 188               	.LM49:
+ 189 00c2 DB9A      		sbi 59-32,3
+ 190               	.LM50:
+ 191 00c4 DC98      		cbi 59-32,4
+ 192               	.LM51:
+ 193 00c6 DD9A      		sbi 59-32,5
+ 194               	.LM52:
+ 195 00c8 DE9A      		sbi 59-32,6
+ 196               	.L16:
+ 197 00ca 0895      		ret
+ 198               	.LFE6:
+ 200               	.global	pomiar
+ 202               	pomiar:
+ 203               	.LFB7:
+ 204               	.LM53:
+ 205               	/* prologue: function */
+ 206               	/* frame size = 0 */
+ 207               	.LM54:
+ 208 00cc 369A      		sbi 38-32,6
+ 209               	.L28:
+ 210               	.LM55:
+ 211 00ce 3699      		sbic 38-32,6
+ 212 00d0 00C0      		rjmp .L28
+ 213               	.LM56:
+ 214 00d2 24B1      		in r18,36-32
+ 215 00d4 35B1      		in r19,(36)+1-32
+ 216               	.LM57:
+ 217 00d6 C901      		movw r24,r18
+ 218               	/* epilogue start */
+ 219 00d8 0895      		ret
+ 220               	.LFE7:
+ 222               	.global	main
+ 224               	main:
+ 225               	.LFB8:
+ 226               	.LM58:
+ 227 00da 4F92      		push r4
+ 228 00dc 5F92      		push r5
+ 229 00de 6F92      		push r6
+ 230 00e0 7F92      		push r7
+ 231 00e2 8F92      		push r8
+ 232 00e4 9F92      		push r9
+ 233 00e6 AF92      		push r10
+ 234 00e8 BF92      		push r11
+ 235 00ea CF92      		push r12
+ 236 00ec DF92      		push r13
+ 237 00ee EF92      		push r14
+ 238 00f0 FF92      		push r15
+ 239 00f2 0F93      		push r16
+ 240 00f4 1F93      		push r17
+ 241 00f6 CF93      		push r28
+ 242 00f8 DF93      		push r29
+ 243               	/* prologue: function */
+ 244               	/* frame size = 0 */
+ 245               	.LM59:
+ 246 00fa A59A      		sbi 52-32,5
+ 247               	.LM60:
+ 248 00fc D09A      		sbi 58-32,0
+ 249               	.LM61:
+ 250 00fe D19A      		sbi 58-32,1
+ 251               	.LM62:
+ 252 0100 D29A      		sbi 58-32,2
+ 253               	.LM63:
+ 254 0102 D39A      		sbi 58-32,3
+ 255               	.LM64:
+ 256 0104 D49A      		sbi 58-32,4
+ 257               	.LM65:
+ 258 0106 D59A      		sbi 58-32,5
+ 259               	.LM66:
+ 260 0108 D69A      		sbi 58-32,6
+ 261               	.LM67:
+ 262 010a A39A      		sbi 52-32,3
+ 263               	.LM68:
+ 264 010c A29A      		sbi 52-32,2
+ 265               	.LM69:
+ 266 010e A19A      		sbi 52-32,1
+ 267               	.LM70:
+ 268 0110 A09A      		sbi 52-32,0
+ 269               	.LM71:
+ 270 0112 3E9A      		sbi 39-32,6
+ 271               	.LM72:
+ 272 0114 87B1      		in r24,39-32
+ 273 0116 8760      		ori r24,lo8(7)
+ 274 0118 87B9      		out 39-32,r24
+ 275               	.LM73:
+ 276 011a 379A      		sbi 38-32,7
+ 277               	.LM74:
+ 278 011c 86B1      		in r24,38-32
+ 279 011e 8360      		ori r24,lo8(3)
+ 280 0120 86B9      		out 38-32,r24
+ 281               	.LBB33:
+ 282               	.LM75:
+ 283 0122 38E1      		ldi r19,lo8(-1000)
+ 284 0124 432E      		mov r4,r19
+ 285 0126 3CEF      		ldi r19,hi8(-1000)
+ 286 0128 532E      		mov r5,r19
+ 287               	.LM76:
+ 288 012a 2CE9      		ldi r18,lo8(-100)
+ 289 012c 622E      		mov r6,r18
+ 290 012e 2FEF      		ldi r18,hi8(-100)
+ 291 0130 722E      		mov r7,r18
+ 292               	.LBB34:
+ 293               	.LBB35:
+ 294               	.LBB36:
+ 295               	.LBB37:
+ 296               	.LM77:
+ 297 0132 90E2      		ldi r25,lo8(20000)
+ 298 0134 A92E      		mov r10,r25
+ 299 0136 9EE4      		ldi r25,hi8(20000)
+ 300 0138 B92E      		mov r11,r25
+ 301               	.LBE37:
+ 302               	.LBE36:
+ 303               	.LBE35:
+ 304               	.LBE34:
+ 305               	.LM78:
+ 306 013a 86EF      		ldi r24,lo8(-10)
+ 307 013c 882E      		mov r8,r24
+ 308 013e 8FEF      		ldi r24,hi8(-10)
+ 309 0140 982E      		mov r9,r24
+ 310               	.LVL1:
+ 311               	.L35:
+ 312               	.LBB41:
+ 313               	.LBB42:
+ 314               	.LM79:
+ 315 0142 369A      		sbi 38-32,6
+ 316               	.L32:
+ 317               	.LM80:
+ 318 0144 3699      		sbic 38-32,6
+ 319 0146 00C0      		rjmp .L32
+ 320               	.LM81:
+ 321 0148 C4B1      		in r28,36-32
+ 322 014a D5B1      		in r29,(36)+1-32
+ 323               	.LBE42:
+ 324               	.LBE41:
+ 325               	.LM82:
+ 326 014c 82E0      		ldi r24,hi8(512)
+ 327 014e C030      		cpi r28,lo8(512)
+ 328 0150 D807      		cpc r29,r24
+ 329               	.LVL2:
+ 330 0152 04F4      		brge .L33
+ 331               	.LM83:
+ 332 0154 AD9A      		sbi 53-32,5
+ 333 0156 00C0      		rjmp .L34
+ 334               	.L33:
+ 335               	.LM84:
+ 336 0158 AD98      		cbi 53-32,5
+ 337               	.L34:
+ 338               	.LM85:
+ 339 015a CE01      		movw r24,r28
+ 340 015c 68EE      		ldi r22,lo8(1000)
+ 341 015e 73E0      		ldi r23,hi8(1000)
+ 342 0160 0E94 0000 		call __divmodhi4
+ 343 0164 FB01      		movw r30,r22
+ 344               	.LM86:
+ 345 0166 649D      		mul r22,r4
+ 346 0168 9001      		movw r18,r0
+ 347 016a 659D      		mul r22,r5
+ 348 016c 300D      		add r19,r0
+ 349 016e 749D      		mul r23,r4
+ 350 0170 300D      		add r19,r0
+ 351 0172 1124      		clr r1
+ 352               	.LVL3:
+ 353 0174 2C0F      		add r18,r28
+ 354 0176 3D1F      		adc r19,r29
+ 355 0178 C901      		movw r24,r18
+ 356 017a 64E6      		ldi r22,lo8(100)
+ 357 017c 70E0      		ldi r23,hi8(100)
+ 358               	.LVL4:
+ 359 017e 0E94 0000 		call __divmodhi4
+ 360 0182 8B01      		movw r16,r22
+ 361               	.LVL5:
+ 362               	.LM87:
+ 363 0184 669D      		mul r22,r6
+ 364 0186 6001      		movw r12,r0
+ 365 0188 679D      		mul r22,r7
+ 366 018a D00C      		add r13,r0
+ 367 018c 769D      		mul r23,r6
+ 368 018e D00C      		add r13,r0
+ 369 0190 1124      		clr r1
+ 370               	.LVL6:
+ 371 0192 C20E      		add r12,r18
+ 372 0194 D31E      		adc r13,r19
+ 373 0196 C601      		movw r24,r12
+ 374 0198 6AE0      		ldi r22,lo8(10)
+ 375 019a 70E0      		ldi r23,hi8(10)
+ 376               	.LVL7:
+ 377 019c 0E94 0000 		call __divmodhi4
+ 378 01a0 7B01      		movw r14,r22
+ 379               	.LVL8:
+ 380               	.LM88:
+ 381 01a2 AB9A      		sbi 53-32,3
+ 382               	.LM89:
+ 383 01a4 CF01      		movw r24,r30
+ 384               	.LVL9:
+ 385 01a6 0E94 0000 		call wyswietlacz
+ 386               	.LVL10:
+ 387               	.LBB43:
+ 388               	.LBB40:
+ 389               	.LBB39:
+ 390               	.LBB38:
+ 391               	.LM90:
+ 392 01aa C501      		movw r24,r10
+ 393               	.LVL11:
+ 394               	/* #APP */
+ 395               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 396 01ac 0197      		1: sbiw r24,1
+ 397 01ae 01F4      		brne 1b
+ 398               	 ;  0 "" 2
+ 399               	/* #NOAPP */
+ 400               	.LBE38:
+ 401               	.LBE39:
+ 402               	.LBE40:
+ 403               	.LBE43:
+ 404               	.LM91:
+ 405 01b0 AB98      		cbi 53-32,3
+ 406               	.LM92:
+ 407 01b2 AA9A      		sbi 53-32,2
+ 408               	.LM93:
+ 409 01b4 C801      		movw r24,r16
+ 410               	.LVL12:
+ 411 01b6 0E94 0000 		call wyswietlacz
+ 412               	.LBB44:
+ 413               	.LBB45:
+ 414               	.LBB46:
+ 415               	.LBB47:
+ 416               	.LM94:
+ 417 01ba C501      		movw r24,r10
+ 418               	.LVL13:
+ 419               	/* #APP */
+ 420               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 421 01bc 0197      		1: sbiw r24,1
+ 422 01be 01F4      		brne 1b
+ 423               	 ;  0 "" 2
+ 424               	/* #NOAPP */
+ 425               	.LBE47:
+ 426               	.LBE46:
+ 427               	.LBE45:
+ 428               	.LBE44:
+ 429               	.LM95:
+ 430 01c0 AA98      		cbi 53-32,2
+ 431               	.LM96:
+ 432 01c2 A99A      		sbi 53-32,1
+ 433               	.LM97:
+ 434 01c4 C701      		movw r24,r14
+ 435               	.LVL14:
+ 436 01c6 0E94 0000 		call wyswietlacz
+ 437               	.LBB48:
+ 438               	.LBB49:
+ 439               	.LBB50:
+ 440               	.LBB51:
+ 441               	.LM98:
+ 442 01ca C501      		movw r24,r10
+ 443               	.LVL15:
+ 444               	/* #APP */
+ 445               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 446 01cc 0197      		1: sbiw r24,1
+ 447 01ce 01F4      		brne 1b
+ 448               	 ;  0 "" 2
+ 449               	/* #NOAPP */
+ 450               	.LBE51:
+ 451               	.LBE50:
+ 452               	.LBE49:
+ 453               	.LBE48:
+ 454               	.LM99:
+ 455 01d0 A998      		cbi 53-32,1
+ 456               	.LM100:
+ 457 01d2 A89A      		sbi 53-32,0
+ 458               	.LM101:
+ 459 01d4 E89C      		mul r14,r8
+ 460 01d6 C001      		movw r24,r0
+ 461 01d8 E99C      		mul r14,r9
+ 462 01da 900D      		add r25,r0
+ 463 01dc F89C      		mul r15,r8
+ 464 01de 900D      		add r25,r0
+ 465 01e0 1124      		clr r1
+ 466               	.LVL16:
+ 467 01e2 8C0D      		add r24,r12
+ 468 01e4 9D1D      		adc r25,r13
+ 469 01e6 0E94 0000 		call wyswietlacz
+ 470               	.LBB52:
+ 471               	.LBB53:
+ 472               	.LBB54:
+ 473               	.LBB55:
+ 474               	.LM102:
+ 475 01ea C501      		movw r24,r10
+ 476               	.LVL17:
+ 477               	/* #APP */
+ 478               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 479 01ec 0197      		1: sbiw r24,1
+ 480 01ee 01F4      		brne 1b
+ 481               	 ;  0 "" 2
+ 482               	/* #NOAPP */
+ 483               	.LBE55:
+ 484               	.LBE54:
+ 485               	.LBE53:
+ 486               	.LBE52:
+ 487               	.LM103:
+ 488 01f0 A898      		cbi 53-32,0
+ 489 01f2 00C0      		rjmp .L35
+ 490               	.LBE33:
+ 491               	.LFE8:
+ 533               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\Marty\AppData\Local\Temp/ccGBTreq.s:2      *ABS*:0000003f __SREG__
+C:\Users\Marty\AppData\Local\Temp/ccGBTreq.s:3      *ABS*:0000003e __SP_H__
+C:\Users\Marty\AppData\Local\Temp/ccGBTreq.s:4      *ABS*:0000003d __SP_L__
+C:\Users\Marty\AppData\Local\Temp/ccGBTreq.s:5      *ABS*:00000034 __CCP__
+C:\Users\Marty\AppData\Local\Temp/ccGBTreq.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\Marty\AppData\Local\Temp/ccGBTreq.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\Marty\AppData\Local\Temp/ccGBTreq.s:18     .text:00000000 wyswietlacz
+C:\Users\Marty\AppData\Local\Temp/ccGBTreq.s:202    .text:000000cc pomiar
+C:\Users\Marty\AppData\Local\Temp/ccGBTreq.s:224    .text:000000da main
+
+UNDEFINED SYMBOLS
+__divmodhi4
